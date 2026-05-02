@@ -1,6 +1,6 @@
-langchain==0.2.1
+langchain
 langchain-google-genai
-langchain-community==0.2.1
+langchain-community
 langchain-text-splitters
 faiss-cpu
 pypdf
