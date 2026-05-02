@@ -49,7 +49,7 @@ def load_rag_pipeline():
     splits = text_splitter.split_documents(docs)
 
     # Use Google Embeddings API (Lightweight, saves memory)
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
     vectorstore = FAISS.from_documents(splits, embeddings)
     retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
 
