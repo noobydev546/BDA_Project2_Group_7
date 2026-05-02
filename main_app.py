@@ -45,7 +45,7 @@ def load_rag_pipeline():
         docs.extend(Docx2txtLoader(file).load())
 
     # Split text into chunks
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=400, chunk_overlap=50)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
     splits = text_splitter.split_documents(docs)
 
     # Use Google Embeddings API (Lightweight, saves memory)
