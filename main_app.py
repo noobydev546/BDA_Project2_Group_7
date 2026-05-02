@@ -31,13 +31,6 @@ else:
     st.error("Please configure GOOGLE_API_KEY in Streamlit secrets!")
     st.stop()
 
-# --- วางโค้ดนี้เพื่อเช็กชื่อโมเดลที่แท้จริง ---
-import google.generativeai as genai
-genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
-available_models = [m.name for m in genai.list_models() if 'generateContent' in m.supported_generation_methods]
-st.info(f"🔍 โมเดล LLM ที่ API Key ของคุณใช้ได้คือ: {available_models}")
-# ----------------------------------------
-
 # 3. Create RAG Pipeline
 @st.cache_resource
 def load_rag_pipeline():
@@ -69,7 +62,7 @@ def load_rag_pipeline():
     vectorstore = FAISS.from_documents(splits, embeddings)
     retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
 
-    llm = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.3)
+    llm = ChatGoogleGenerativeAI(model="'models/gemini-2.5-flash", temperature=0.3)
 
     system_prompt = (
         "You are a helpful and knowledgeable assistant for the MLii Ebook Fund. "
