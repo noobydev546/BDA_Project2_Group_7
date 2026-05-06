@@ -62,7 +62,7 @@ def load_rag_pipeline():
     vectorstore = FAISS.from_documents(splits, embeddings)
     retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
 
-    llm = ChatGoogleGenerativeAI(model="models/gemini-2.5-pro", temperature=0.3)
+    llm = ChatGoogleGenerativeAI(model="models/gemini-2.5-flash", temperature=0.3)
 
     system_prompt = (
         "You are a helpful and knowledgeable assistant for the MLii Ebook Fund. "
